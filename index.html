@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FFNN Regression mit TensorFlow.js</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.2.0/dist/tf.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Feed-Forward Neural Network Regression</h1>
+    <p>Vergleich: Ohne Rauschen / Mit Rauschen (Best-Fit vs. Overfit)</p>
+  </header>
+
+  <main>
+    <section class="plots-container">
+      <div>
+        <h2>R1: Datensätze</h2>
+        <div id="dataset-plot-clean"></div>
+        <div id="dataset-plot-noisy"></div>
+      </div>
+
+      <div>
+        <h2>R2: Modell ohne Rauschen</h2>
+        <div id="prediction-clean-train"></div>
+        <div id="prediction-clean-test"></div>
+        <p id="loss-clean"></p>
+      </div>
+
+      <div>
+        <h2>R3: Best-Fit Modell mit Rauschen</h2>
+        <div id="prediction-best-train"></div>
+        <div id="prediction-best-test"></div>
+        <p id="loss-best"></p>
+      </div>
+
+      <div>
+        <h2>R4: Overfit-Modell mit Rauschen</h2>
+        <div id="prediction-overfit-train"></div>
+        <div id="prediction-overfit-test"></div>
+        <p id="loss-overfit"></p>
+      </div>
+    </section>
+
+    <section class="documentation">
+      <h2>Diskussion</h2>
+      <p>Die Regressionsergebnisse zeigen deutlich, dass das Modell ohne Rauschen sowohl auf den Trainings- als auch Testdaten sehr gute Vorhersagen liefert. Beim verrauschten Datensatz hingegen generalisiert das Best-Fit Modell besser, während das Overfit-Modell deutlich schlechter auf den Testdaten abschneidet. Der Einsatz von Epochenzahl, Batch-Size und Lernrate hat großen Einfluss auf die Generalisierungsfähigkeit. Die Einführung von Rauschen erschwert das Lernen der zugrunde liegenden Funktion, insbesondere bei komplexen Polynomfunktionen mit multiplen Wendepunkten. Insgesamt lässt sich beobachten, dass mehr Training nicht gleichbedeutend mit besseren Vorhersagen ist. Die Herausforderung bestand darin, eine ausgewogene Modellkomplexität zu finden. Die Loss-Werte zeigen deutlich das Überanpassen beim Overfit-Modell. Es wurde außerdem deutlich, wie empfindlich neuronale Netze gegenüber Rauschen im Label-Bereich sind. Eine visuelle Darstellung hilft sehr dabei, die Modellqualität einzuschätzen.</p>
+
+      <h2>1) Technisch</h2>
+      <ul>
+        <li><strong>TensorFlow.js</strong>: für die Implementierung, das Training und die Inferenz des FFNN-Modells direkt im Browser.</li>
+        <li><strong>Plotly.js</strong>: für die dynamische Visualisierung der Datensätze und der Modellvorhersagen in Form von interaktiven Plots.</li>
+      </ul>
+      <p>Besonderheiten: Es wurden mehrere Modelle parallel trainiert und visualisiert. Zur Steuerung und Vergleichbarkeit wurden alle Modelle in der gleichen Umgebung, aber mit unterschiedlichen Parametern trainiert.</p>
+
+      <h2>2) Fachlich</h2>
+      <p>Dies war mein erster direkter Kontakt mit der Implementierung eines neuronalen Netzes zur Regression in JavaScript. Die Aufgabe erforderte ein gutes Verständnis der Konzepte von Overfitting, Generalisierung und Datenrauschen. Besonders herausfordernd war es, die Plot-Daten und Loss-Werte konsistent zu halten, insbesondere beim Vergleich der Modellgüte auf Trainings- und Testdaten. Ich habe viel mit ChatGPT zusammengearbeitet, um schnell zu iterieren, UI-Komponenten aufzubauen und Bugs zu analysieren. Die Verwendung von vortrainierten Frameworks wie TensorFlow.js hat mir die praktische Umsetzung im Browser sehr erleichtert. Ich habe gelernt, wie sich Architektur, Hyperparameter und Datenqualität auf das Modellverhalten auswirken.</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
