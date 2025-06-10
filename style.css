@@ -33,41 +33,26 @@ h2, h3 {
   margin-top: 0;
 }
 
-canvas {
-  max-width: 100%;
-  height: auto;
-  margin: 1rem 0;
+p {
+  font-size: 1rem;
+  line-height: 1.5;
 }
 
-#plots {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+ul {
+  padding-left: 1.2rem;
 }
 
-.plot-container {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+ul li {
+  margin-bottom: 0.5rem;
 }
 
-.plot-container p {
+#loss-clean, #loss-best, #loss-overfit {
+  font-weight: bold;
   margin-top: 0.5rem;
-  font-size: 0.9rem;
-  color: #555;
 }
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.85rem;
-  color: #888;
-  border-top: 1px solid #eee;
-}  
 
 @media (max-width: 768px) {
-  #plots {
-    grid-template-columns: 1fr;
+  main {
+    padding: 1rem;
   }
-} 
+}
